@@ -1,0 +1,20 @@
+$user-message-color: #f8f8f8;
+$bot-message-color: #abcef5;
+
+.spacer {
+  min-width: 40px;
+  flex: 1 0 auto;
+}
+
+.message {
+  white-space: pre-wrap;
+  background: $bot-message-color;
+
+  &__user {
+    background: $user-message-color;
+  }
+}
+
+.send-button {
+  margin: 0 0 3px -60px;
+}
