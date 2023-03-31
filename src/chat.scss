@@ -7,11 +7,14 @@ $bot-message-color: #abcef5;
 }
 
 .message {
-  white-space: pre-wrap;
   background: $bot-message-color;
 
   &__user {
     background: $user-message-color;
+  }
+
+  p {
+    white-space: pre-wrap;
   }
 }
 

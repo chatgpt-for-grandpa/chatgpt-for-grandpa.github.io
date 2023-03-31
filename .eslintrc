@@ -16,24 +16,30 @@
   "env": {
     "browser": true,
     "es6": true,
-    "jest/globals": true,
+    "jest/globals": true
   },
   "globals": {
     "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly",
+    "SharedArrayBuffer": "readonly"
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "sourceType": "module",
     "project": "./tsconfig.json",
-     "tsconfigRootDir": ".",
+     "tsconfigRootDir": "."
   },
   "rules": {
     "prettier/prettier": [
+      "warn",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "react/jsx-no-useless-fragment": [
       "error",
       {
-        "endOfLine": "auto",
-      },
-    ],
-  },
+        "allowExpressions": true
+      }
+    ]
+  }
 }

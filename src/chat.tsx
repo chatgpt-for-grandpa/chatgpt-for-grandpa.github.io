@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
+import TextWithCode from "./text_with_code";
 import "./chat.scss";
 
 interface Message {
@@ -87,7 +88,7 @@ function Chat() {
               <div
                 className={`message message__${message.role} border rounded my-2 p-2`}
               >
-                {message.content}
+                <TextWithCode text={message.content} />
               </div>
               {message.role !== "user" && <div className="spacer" />}
             </div>
@@ -95,7 +96,7 @@ function Chat() {
         })}
       </div>
       {errorMessage && <div className="error-message">{errorMessage}</div>}
-      <div className="chat-form d-flex align-items-end my-3">
+      <div className="chat-form d-flex align-items-end py-3">
         <div className="ms-4 flex-grow-1">
           <textarea
             className="form-control"
