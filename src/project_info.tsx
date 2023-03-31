@@ -14,14 +14,28 @@ function ProjectIntro() {
 
   return (
     <div className="project-intro p-2 mb-3 border rounded-bottom">
-      <ButtonGroup aria-label="Basic example">
-        <Button variant="link" size="lg" onClick={activeInfo}>
+      <ButtonGroup
+        aria-label="Basic example"
+        className="d-flex"
+        style={{ maxWidth: 450 }}
+      >
+        <Button variant="link" size="lg" className="px-0" onClick={activeInfo}>
           项目介绍
         </Button>
-        <Button variant="link" size="lg" onClick={activePurpose}>
+        <Button
+          variant="link"
+          size="lg"
+          className="px-0"
+          onClick={activePurpose}
+        >
           项目宗旨
         </Button>
-        <Button variant="link" size="lg" onClick={activeSupport}>
+        <Button
+          variant="link"
+          size="lg"
+          className="px-0"
+          onClick={activeSupport}
+        >
           支持项目
         </Button>
       </ButtonGroup>

@@ -1,10 +1,6 @@
 $user-message-color: #f8f8f8;
 $bot-message-color: #abcef5;
 
-.chat {
-  overflow-x: hidden;
-}
-
 .spacer {
   min-width: 40px;
   flex: 1 0 auto;
@@ -13,6 +9,8 @@ $bot-message-color: #abcef5;
 .message {
   background: $bot-message-color;
   position: relative;
+  width: fit-content;
+  max-width: calc(97% - 15px);
   
   /*
   &__assistant::before {
@@ -32,6 +30,8 @@ $bot-message-color: #abcef5;
 
   &__user {
     background: $user-message-color;
+    margin-left: auto;
+    margin-right: 0;
   }
 
   p {
@@ -40,6 +40,10 @@ $bot-message-color: #abcef5;
     &:last-child {
       margin-bottom: 0;
     }
+  }
+
+  code {
+    max-width: 85vw;
   }
 }
 

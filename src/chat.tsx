@@ -87,14 +87,11 @@ function Chat() {
       <div className="messages">
         {messages.map((message) => {
           return (
-            <div className="message-wrapper d-flex" key={message.uuid}>
-              {message.role === "user" && <div className="spacer" />}
-              <div
-                className={`message message__${message.role} border rounded my-2 p-2`}
-              >
-                <TextWithCode text={message.content} />
-              </div>
-              {message.role !== "user" && <div className="spacer" />}
+            <div
+              className={`message message__${message.role} border rounded my-3 p-2`}
+              key={message.uuid}
+            >
+              <TextWithCode text={message.content} />
             </div>
           );
         })}

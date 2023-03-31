@@ -21,7 +21,7 @@ function App() {
       <h1>聊天机器人</h1>
       <ProjectIntro />
       <Row>
-        <Col xs={12} md={3}>
+        <Col xs={12} md={2}>
           <Form.Label style={{ height: 30 }}>字体大小：</Form.Label>
         </Col>
         <Col xs={12} md={4}>
