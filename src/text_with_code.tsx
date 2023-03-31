@@ -18,7 +18,7 @@ function TextWithCode({ text }: Props) {
       while (j < lines.length && lines[j] !== "```") {
         j += 1;
       }
-      const code = lines.slice(i + 1, j - 1).join("\n");
+      const code = lines.slice(i + 1, j).join("\n");
       result.push(
         <CopyBlock
           key={`${i}-code`}
