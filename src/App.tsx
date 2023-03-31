@@ -29,6 +29,7 @@ function App() {
             min={0}
             max={3}
             step={1}
+            value={fontSize}
             onChange={handleFontSizeChange}
           />
         </Col>
