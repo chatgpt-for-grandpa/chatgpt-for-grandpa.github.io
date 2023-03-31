@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import TextWithCode from "./text_with_code";
 import "./chat.scss";
+import { BotSelfIntro, ExampleHistory } from "./consts";
 
 interface Message {
   role: string;
@@ -15,7 +16,7 @@ function Chat() {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    const history = JSON.parse(localStorage.chat_history || "[]");
+    const history = JSON.parse(localStorage.chat_history || ExampleHistory);
     setMessages(history);
   }, []);
 
@@ -80,6 +81,9 @@ function Chat() {
 
   return (
     <div className="chat">
+      <div className="message p-3 mb-4 border">
+        <p>{BotSelfIntro}</p>
+      </div>
       <div className="messages">
         {messages.map((message) => {
           return (
@@ -95,7 +99,11 @@ function Chat() {
           );
         })}
       </div>
-      {errorMessage && <div className="error-message">{errorMessage}</div>}
+      {errorMessage && (
+        <div className="error-message text-danger text-center">
+          {errorMessage}
+        </div>
+      )}
       <div className="chat-form d-flex align-items-end py-3">
         <div className="ms-4 flex-grow-1">
           <textarea

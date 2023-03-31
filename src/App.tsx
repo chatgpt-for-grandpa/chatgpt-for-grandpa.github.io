@@ -1,14 +1,17 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
+import Container from "react-bootstrap/Container";
 import "./App.css";
+import ProjectIntro from "./project_info";
 import Chat from "./chat";
 
 function App() {
   return (
-    <div className="App container-md">
+    <Container fluid="md" className="App pt-4">
       <h1>聊天机器人</h1>
+      <ProjectIntro />
       <Chat />
-    </div>
+    </Container>
   );
 }
 

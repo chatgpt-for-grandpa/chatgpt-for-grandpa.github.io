@@ -1,6 +1,10 @@
 $user-message-color: #f8f8f8;
 $bot-message-color: #abcef5;
 
+.chat {
+  overflow-x: hidden;
+}
+
 .spacer {
   min-width: 40px;
   flex: 1 0 auto;
@@ -8,6 +12,23 @@ $bot-message-color: #abcef5;
 
 .message {
   background: $bot-message-color;
+  position: relative;
+  
+  /*
+  &__assistant::before {
+    content: url(https://www.13042332817.top/static/icon-robot.jpg);
+    position: absolute;
+    top: 2px;
+    left: -40px;
+  }
+  
+  &__user::before {
+    content: url(https://www.13042332817.top/static/icon-human.jpg);
+    position: absolute;
+    top: 2px;
+    right: -40px;
+  }
+  */
 
   &__user {
     background: $user-message-color;
@@ -19,5 +40,5 @@ $bot-message-color: #abcef5;
 }
 
 .send-button {
-  margin: 0 0 3px -60px;
+  margin: 0 0 3px -50px;
 }
