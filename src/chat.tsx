@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Spinner from "react-bootstrap/Spinner";
 import { v4 as uuidv4 } from "uuid";
 import TextWithCode from "./text_with_code";
 import "./chat.scss";
@@ -37,9 +38,15 @@ function Chat() {
       content: input,
       uuid: uuidv4(),
     };
-    let currMessages = [...messages, newMessage];
-    setMessages(currMessages);
+    const botMessage = {
+      role: "assistant",
+      content: "",
+      uuid: uuidv4(),
+    };
+
+    setMessages([...messages, newMessage, botMessage]);
     setInput("");
+    setErrorMessage("");
 
     try {
       const response = await fetch("https://www.13042332817.top/message", {
@@ -48,23 +55,26 @@ function Chat() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          message: currMessages.map(({ role, content }) => ({
+          message: [...messages, newMessage].map(({ role, content }) => ({
             role,
             content,
           })),
         }),
       });
 
-      const answer = await response.text();
-      const botResponse: Message = {
-        role: "assistant",
-        content: answer,
-        uuid: uuidv4(),
-      };
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const reader = response.body!.getReader();
+      const decoder = new TextDecoder();
+      let result = null;
+      do {
+        // eslint-disable-next-line no-await-in-loop
+        result = await reader.read();
+        const partText = decoder.decode(result.value);
+        botMessage.content += partText;
+        setMessages([...messages, newMessage, botMessage]);
+      } while (result && !result.done);
 
-      currMessages = [...currMessages, botResponse];
-      setMessages(currMessages);
-      saveHistory(currMessages);
+      saveHistory([...messages, newMessage, botMessage]);
     } catch (error) {
       setErrorMessage(`出错了: ${error}`);
       setMessages(messages);
@@ -91,7 +101,11 @@ function Chat() {
               className={`message message__${message.role} border rounded my-3 p-2`}
               key={message.uuid}
             >
-              <TextWithCode text={message.content} />
+              {message.content ? (
+                <TextWithCode text={message.content} />
+              ) : (
+                <Spinner animation="border" size="sm" />
+              )}
             </div>
           );
         })}
