@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
+import Button from "react-bootstrap/Button";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 import Spinner from "react-bootstrap/Spinner";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { v4 as uuidv4 } from "uuid";
 import TextWithCode from "./text_with_code";
 import "./chat.scss";
-import { BotSelfIntro, ExampleHistory } from "./consts";
+import { BotSelfIntro, MessageApi } from "./consts";
 
 interface Message {
   role: string;
@@ -11,22 +16,103 @@ interface Message {
   uuid: string;
 }
 
+interface Record {
+  messages: Message[];
+  title: string;
+  key: string;
+}
+
+async function chatApi(messages: Message[]) {
+  const response = await fetch(MessageApi, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      message: messages.map(({ role, content }) => ({
+        role,
+        content,
+      })),
+    }),
+  });
+  return response;
+}
+
 function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);
+  const [title, setTitle] = useState("新对话");
+  const [recordKey, setRecordKey] = useState(new Date().toLocaleString());
+  const [history, setHistory] = useState<Record[]>([]);
+  const [isAnswering, setIsAnswering] = useState(false);
+  const [isUpdatingTitle, setIsUpdatingTitle] = useState(false);
+
   const [input, setInput] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    const history = JSON.parse(localStorage.chat_history || ExampleHistory);
-    setMessages(history);
+    setHistory(JSON.parse(localStorage.history || "[]"));
   }, []);
 
-  const saveHistory = (ms: Message[]) => {
-    localStorage.chat_history = JSON.stringify(ms);
+  const saveHistory = () => {
+    if (messages.length === 0) return;
+    const curr: Record = {
+      messages,
+      title,
+      key: recordKey,
+    };
+    const newHistory = [curr, ...history.filter(({ key }) => key !== curr.key)];
+    setHistory(newHistory);
+    localStorage.history = JSON.stringify(newHistory);
   };
+
+  const loadHistory = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const element = e.target as HTMLElement;
+    const selectedKey = element.getAttribute("data-key");
+    const toLoad: Record = selectedKey
+      ? history.filter(({ key }) => key === selectedKey)[0]
+      : { messages: [], title: "新对话", key: new Date().toLocaleString() };
+
+    setMessages(toLoad.messages);
+    setTitle(toLoad.title);
+    setRecordKey(toLoad.key);
+  };
+
+  useEffect(() => {
+    if (!isAnswering) {
+      saveHistory();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAnswering]);
+
+  useEffect(() => {
+    if (!isUpdatingTitle) {
+      saveHistory();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isUpdatingTitle]);
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInput(e.target.value);
+  };
+
+  const updateChatTitle = async () => {
+    setIsUpdatingTitle(true);
+    try {
+      const response = await chatApi([
+        ...messages,
+        {
+          role: "user",
+          content: "总结我们的对话作为标题，尽量简短。回复中不要包含其他内容。",
+          uuid: "",
+        },
+      ]);
+      setTitle(await response.text());
+      saveHistory();
+    } catch (error) {
+      setErrorMessage(`总结对话出错了: ${error}`);
+    } finally {
+      setIsUpdatingTitle(false);
+    }
   };
 
   const handleSubmit = async () => {
@@ -48,19 +134,9 @@ function Chat() {
     setInput("");
     setErrorMessage("");
 
+    setIsAnswering(true);
     try {
-      const response = await fetch("https://www.13042332817.top/message", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          message: [...messages, newMessage].map(({ role, content }) => ({
-            role,
-            content,
-          })),
-        }),
-      });
+      const response = await chatApi([...messages, newMessage]);
 
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const reader = response.body!.getReader();
@@ -73,12 +149,12 @@ function Chat() {
         botMessage.content += partText;
         setMessages([...messages, newMessage, botMessage]);
       } while (result && !result.done);
-
-      saveHistory([...messages, newMessage, botMessage]);
     } catch (error) {
       setErrorMessage(`出错了: ${error}`);
       setMessages(messages);
       setInput(input);
+    } finally {
+      setIsAnswering(false);
     }
   };
 
@@ -94,6 +170,33 @@ function Chat() {
       <div className="message p-3 mb-4 border">
         <p>{BotSelfIntro}</p>
       </div>
+      <Row className="chat-manager align-items-center">
+        <Col xs="6" md="auto" className="mb-3">
+          <DropdownButton title="历史聊天记录">
+            <Dropdown.Item onClick={loadHistory}>新建对话</Dropdown.Item>
+            <Dropdown.Divider />
+            {history.map((r) => (
+              <Dropdown.Item key={r.key} onClick={loadHistory} data-key={r.key}>
+                {r.key} | {r.title}
+              </Dropdown.Item>
+            ))}
+          </DropdownButton>
+        </Col>
+        <Col xs="6" md="auto" className="mb-3">
+          <Button
+            onClick={updateChatTitle}
+            disabled={isUpdatingTitle}
+            variant="secondary"
+          >
+            重新生成标题
+          </Button>
+        </Col>
+        <Col className="text-center mb-3">
+          <b>
+            {title} -- {recordKey}
+          </b>
+        </Col>
+      </Row>
       <div className="messages">
         {messages.map((message) => {
           return (
@@ -126,14 +229,15 @@ function Chat() {
             placeholder="输入消息，可使用ctrl+回车发送"
           />
         </div>
-        <button
+        <Button
           type="button"
-          className="btn btn-success send-button"
+          variant="success"
+          className="send-button"
           onClick={handleSubmit}
-          disabled={!input}
+          disabled={isAnswering || !input}
         >
           发送
-        </button>
+        </Button>
       </div>
     </div>
   );
