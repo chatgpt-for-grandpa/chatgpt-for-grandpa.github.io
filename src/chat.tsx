@@ -77,20 +77,6 @@ function Chat() {
     setRecordKey(toLoad.key);
   };
 
-  useEffect(() => {
-    if (!isAnswering) {
-      saveHistory();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAnswering]);
-
-  useEffect(() => {
-    if (!isUpdatingTitle) {
-      saveHistory();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isUpdatingTitle]);
-
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInput(e.target.value);
   };
@@ -164,6 +150,21 @@ function Chat() {
       handleSubmit();
     }
   };
+
+  useEffect(() => {
+    if (!isAnswering) {
+      saveHistory();
+      if (messages.length % 10 === 6) updateChatTitle();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAnswering]);
+
+  useEffect(() => {
+    if (!isUpdatingTitle) {
+      saveHistory();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isUpdatingTitle]);
 
   return (
     <div className="chat">
