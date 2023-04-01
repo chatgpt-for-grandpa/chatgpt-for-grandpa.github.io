@@ -183,15 +183,17 @@ function Chat() {
             ))}
           </DropdownButton>
         </Col>
-        <Col xs="6" md="auto" className="mb-3">
-          <Button
-            onClick={updateChatTitle}
-            disabled={isUpdatingTitle}
-            variant="secondary"
-          >
-            重新生成标题
-          </Button>
-        </Col>
+        {messages.length > 6 && (
+          <Col xs="6" md="auto" className="mb-3">
+            <Button
+              onClick={updateChatTitle}
+              disabled={isUpdatingTitle || isAnswering}
+              variant="secondary"
+            >
+              重新生成标题
+            </Button>
+          </Col>
+        )}
         <Col className="text-center mb-3">
           <b>
             {title} -- {recordKey}
