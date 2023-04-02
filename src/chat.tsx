@@ -177,7 +177,7 @@ function Chat() {
         <p>{BotSelfIntro}</p>
       </div>
       <Row className="chat-manager align-items-center">
-        <Col xs="6" md="auto" className="mb-3">
+        <Col xs="auto" className="mb-3">
           <DropdownButton title="历史聊天记录">
             <Dropdown.Item onClick={loadHistory}>新建对话</Dropdown.Item>
             <Dropdown.Divider />
@@ -189,17 +189,19 @@ function Chat() {
           </DropdownButton>
         </Col>
         {messages.length > 6 && (
-          <Col xs="6" md="auto" className="mb-3">
+          <Col xs="auto" className="mb-3">
             <Button
               onClick={updateChatTitle}
               disabled={isUpdatingTitle || isAnswering}
               variant="secondary"
             >
               重新生成标题
+              {isUpdatingTitle && <Spinner animation="border" size="sm" />}
             </Button>
           </Col>
         )}
-        <Col className="text-center mb-3">
+        <Col xs="12" md="1" />
+        <Col xs="12" md="auto" className="text-center mb-3">
           <b>
             {title} -- {recordKey}
           </b>
@@ -226,7 +228,7 @@ function Chat() {
           {errorMessage}
         </div>
       )}
-      <div className="chat-form py-3 ps-4 pe-1 position-relative">
+      <div className="chat-form py-3 ps-4 d-flex align-items-end">
         <TextareaAutosize
           className="form-control"
           value={input}
@@ -239,11 +241,11 @@ function Chat() {
         <Button
           type="button"
           variant="success"
-          className="send-button"
+          className="send-button ms-2"
           onClick={handleSubmit}
           disabled={isAnswering || !input}
         >
-          发送
+          📤
         </Button>
       </div>
     </div>
