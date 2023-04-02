@@ -11,7 +11,11 @@ $bot-message-color: #abcef5;
   position: relative;
   width: fit-content;
   max-width: calc(97% - 15px);
-  
+
+  & pre, .hljs {
+    padding: 7px;
+  }
+
   /*
   &__assistant::before {
     content: url(https://www.13042332817.top/static/icon-robot.jpg);
@@ -36,13 +40,18 @@ $bot-message-color: #abcef5;
 
   p {
     white-space: pre-wrap;
+    overflow-wrap: break-word;
+    margin-bottom: 1.5em;
 
     &:last-child {
       margin-bottom: 0;
     }
   }
 
-  code {
-    max-width: 85vw;
+  .switch-markdown {
+    transform: scale(0.8);
+    transform-origin: 0 0;
+    // margin-left: -10px;
+    // margin-top: -10px;
   }
 }

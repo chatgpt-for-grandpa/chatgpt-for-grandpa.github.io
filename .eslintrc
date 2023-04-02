@@ -40,6 +40,12 @@
       {
         "allowExpressions": true
       }
+    ],
+    "no-empty": [
+      "error",
+      {
+        "allowEmptyCatch": true
+      }
     ]
   }
 }

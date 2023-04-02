@@ -7,7 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import TextareaAutosize from "react-textarea-autosize";
 import { v4 as uuidv4 } from "uuid";
-import TextWithCode from "./text_with_code";
+import RenderMessage from "./render_message";
 import "./chat.scss";
 import { BotSelfIntro, MessageApi } from "./consts";
 
@@ -232,7 +232,10 @@ function Chat() {
               key={message.uuid}
             >
               {message.content ? (
-                <TextWithCode text={message.content} />
+                <RenderMessage
+                  text={message.content}
+                  defaultEnableMd={message.role !== "user"}
+                />
               ) : (
                 <Spinner animation="border" size="sm" />
               )}
