@@ -5,6 +5,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Spinner from "react-bootstrap/Spinner";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import TextareaAutosize from "react-textarea-autosize";
 import { v4 as uuidv4 } from "uuid";
 import TextWithCode from "./text_with_code";
 import "./chat.scss";
@@ -221,17 +222,15 @@ function Chat() {
           {errorMessage}
         </div>
       )}
-      <div className="chat-form d-flex align-items-end py-3">
-        <div className="ms-4 flex-grow-1">
-          <textarea
-            className="form-control"
-            value={input}
-            onChange={handleChange}
-            onKeyDown={handleKeyDown}
-            rows={5}
-            placeholder="输入消息，可使用ctrl+回车发送"
-          />
-        </div>
+      <div className="chat-form py-3 ps-4 pe-1 position-relative">
+        <TextareaAutosize
+          className="form-control"
+          value={input}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+          maxRows={15}
+          placeholder="输入消息，可使用ctrl+回车发送"
+        />
         <Button
           type="button"
           variant="success"

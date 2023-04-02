@@ -48,5 +48,7 @@ $bot-message-color: #abcef5;
 }
 
 .send-button {
-  margin: 0 0 3px -50px;
+  position: absolute;
+  right: -8px;
+  bottom: 8px;
 }
