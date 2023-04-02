@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import Image from "react-bootstrap/Image";
+import { BsSendFill } from "react-icons/bs";
 import { DrawApi } from "./consts";
 
 function Draw() {
@@ -51,7 +52,7 @@ function Draw() {
           onClick={handleSubmit}
           disabled={isDrawing || !input}
         >
-          📤
+          <BsSendFill />
         </Button>
       </InputGroup>
 

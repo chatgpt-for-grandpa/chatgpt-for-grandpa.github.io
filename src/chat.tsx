@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import TextareaAutosize from "react-textarea-autosize";
 import { v4 as uuidv4 } from "uuid";
+import { BsSendFill } from "react-icons/bs";
 import RenderMessage from "./render_message";
 import "./chat.scss";
 import { BotSelfIntro, MessageApi } from "./consts";
@@ -266,7 +267,7 @@ function Chat() {
           onClick={handleSubmit}
           disabled={isAnswering || !input}
         >
-          📤
+          <BsSendFill />
         </Button>
       </div>
     </div>
