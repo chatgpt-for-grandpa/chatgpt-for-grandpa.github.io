@@ -10,7 +10,12 @@ import { v4 as uuidv4 } from "uuid";
 import { BsSendFill } from "react-icons/bs";
 import RenderMessage from "./render_message";
 import "./chat.scss";
-import { BotSelfIntro, MessageApi } from "./consts";
+import {
+  BotSelfIntro1,
+  BotSelfIntro2,
+  MessageApi,
+  ChatExamples,
+} from "./consts";
 
 interface Message {
   role: string;
@@ -183,10 +188,25 @@ function Chat() {
 
   return (
     <div className="chat">
-      <div className="message p-3 mb-4 border">
-        <p>{BotSelfIntro}</p>
-      </div>
-      <Row className="chat-manager align-items-center">
+      {messages.length <= 2 && (
+        <div className="message p-3 mb-4 border">
+          <p>{BotSelfIntro1}</p>
+          <ul>
+            {ChatExamples.map((t) => (
+              <li key={t}>
+                {t}{" "}
+                <small>
+                  <a href="###" onClick={() => setInput(t)}>
+                    试试
+                  </a>
+                </small>
+              </li>
+            ))}
+          </ul>
+          <p>{BotSelfIntro2}</p>
+        </div>
+      )}
+      <Row className="chat-manager align-items-center mt-2">
         <Col xs="auto" className="mb-3">
           <DropdownButton title="历史对话">
             <Dropdown.Item onClick={loadHistory}>新建对话</Dropdown.Item>
@@ -250,7 +270,7 @@ function Chat() {
           {errorMessage}
         </div>
       )}
-      <div className="chat-form py-3 ps-4 d-flex align-items-end">
+      <div className="chat-form py-3 ps-3 d-flex align-items-end">
         <TextareaAutosize
           className="form-control"
           value={input}
