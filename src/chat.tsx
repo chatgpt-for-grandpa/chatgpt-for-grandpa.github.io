@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
@@ -49,6 +49,8 @@ function Chat() {
 
   const [input, setInput] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   useEffect(() => {
     setHistory(JSON.parse(localStorage.history || "[]"));
@@ -155,6 +157,7 @@ function Chat() {
 
   useEffect(() => {
     if (!isAnswering) {
+      textareaRef.current?.focus();
       saveHistory();
       if (messages.length % 10 === 6) updateChatTitle();
     }
@@ -231,6 +234,7 @@ function Chat() {
           onKeyDown={handleKeyDown}
           maxRows={15}
           placeholder="输入消息，可使用ctrl+回车发送"
+          ref={textareaRef}
         />
         <Button
           type="button"
