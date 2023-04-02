@@ -10,3 +10,4 @@ export const BotSelfIntro = `我叫许三多，可以通过对话来实现很多
 我还能学习和不断改进，以更好地为您服务。但，我所提供的信息可能有事实性的错误，请一定要有自己的判断！`;
 
 export const MessageApi = "https://www.13042332817.top/message";
+export const DrawApi = "https://www.13042332817.top/draw";

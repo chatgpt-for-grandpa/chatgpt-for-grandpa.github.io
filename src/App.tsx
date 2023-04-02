@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "./App.css";
 import ProjectIntro from "./project_info";
-import Chat from "./chat";
+import Tabs from "./tabs";
 
 function App() {
   const [fontSize, setFontSize] = useState(1);
@@ -34,7 +34,7 @@ function App() {
           />
         </Col>
       </Row>
-      <Chat />
+      <Tabs />
     </Container>
   );
 }
