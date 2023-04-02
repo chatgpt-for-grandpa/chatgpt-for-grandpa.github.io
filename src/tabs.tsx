@@ -20,8 +20,12 @@ function Tabs() {
         </Nav.Item>
       </Nav>
 
-      {active === "chat" && <Chat />}
-      {active === "draw" && <Draw />}
+      <div hidden={active !== "chat"}>
+        <Chat />
+      </div>
+      <div hidden={active !== "draw"}>
+        <Draw />
+      </div>
     </>
   );
 }
