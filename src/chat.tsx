@@ -196,7 +196,13 @@ function Chat() {
               <li key={t}>
                 {t}{" "}
                 <small>
-                  <a href="###" onClick={() => setInput(t)}>
+                  <a
+                    href="###"
+                    onClick={() => {
+                      setInput(t);
+                      textareaRef.current?.focus();
+                    }}
+                  >
                     试试
                   </a>
                 </small>
