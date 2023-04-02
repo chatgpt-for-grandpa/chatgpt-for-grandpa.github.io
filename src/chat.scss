@@ -49,9 +49,12 @@ $bot-message-color: #abcef5;
   }
 
   .switch-markdown {
-    transform: scale(0.8);
-    transform-origin: 0 0;
-    // margin-left: -10px;
-    // margin-top: -10px;
+    display: none;
+  }
+}
+
+.message:hover, .message:active {
+  .switch-markdown {
+    display: block;
   }
 }

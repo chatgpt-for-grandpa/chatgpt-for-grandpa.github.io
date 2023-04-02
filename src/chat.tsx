@@ -234,6 +234,7 @@ function Chat() {
               {message.content ? (
                 <RenderMessage
                   text={message.content}
+                  uuid={message.uuid}
                   defaultEnableMd={message.role !== "user"}
                 />
               ) : (
