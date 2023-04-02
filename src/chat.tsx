@@ -80,6 +80,15 @@ function Chat() {
     setRecordKey(toLoad.key);
   };
 
+  const deleteFromHistory = () => {
+    const newHistory = history.filter(({ key }) => key !== recordKey);
+    setHistory(newHistory);
+    localStorage.history = JSON.stringify(newHistory);
+    setMessages([]);
+    setTitle("新对话");
+    setRecordKey(new Date().toLocaleString());
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInput(e.target.value);
   };
@@ -178,7 +187,7 @@ function Chat() {
       </div>
       <Row className="chat-manager align-items-center">
         <Col xs="auto" className="mb-3">
-          <DropdownButton title="历史聊天记录">
+          <DropdownButton title="历史对话">
             <Dropdown.Item onClick={loadHistory}>新建对话</Dropdown.Item>
             <Dropdown.Divider />
             {history.map((r) => (
@@ -195,8 +204,16 @@ function Chat() {
               disabled={isUpdatingTitle || isAnswering}
               variant="secondary"
             >
-              重新生成标题
+              重写标题
               {isUpdatingTitle && <Spinner animation="border" size="sm" />}
+            </Button>
+          </Col>
+        )}
+        {messages.length > 0 && (
+          <Col xs="auto" className="mb-3">
+            <Button variant="danger" onClick={deleteFromHistory}>
+              {" "}
+              删除{" "}
             </Button>
           </Col>
         )}
