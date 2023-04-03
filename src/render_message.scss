@@ -4,6 +4,7 @@
   .switch-markdown {
     display: none;
     position: absolute;
+    z-index: 9999;
     top: -8px;
     right: 2px;
     opacity: 0.7;
@@ -20,6 +21,16 @@
   &:hover, .message:active {
     .switch-markdown {
       display: block;
+    }
+  }
+
+  p {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    margin-bottom: 1.5em;
+
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 }

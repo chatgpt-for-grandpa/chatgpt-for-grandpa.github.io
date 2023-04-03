@@ -254,7 +254,7 @@ function Chat() {
         {messages.map((message) => {
           return (
             <div
-              className={`message message__${message.role} border rounded my-3 p-2`}
+              className={`message message__${message.role} border rounded my-3`}
               key={message.uuid}
             >
               {message.content ? (

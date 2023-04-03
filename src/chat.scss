@@ -8,7 +8,6 @@ $bot-message-color: #abcef5;
 
 .message {
   background: $bot-message-color;
-  position: relative;
   width: fit-content;
   max-width: calc(97% - 15px);
 
@@ -36,16 +35,6 @@ $bot-message-color: #abcef5;
     background: $user-message-color;
     margin-left: auto;
     margin-right: 0;
-  }
-
-  p {
-    white-space: pre-wrap;
-    overflow-wrap: break-word;
-    margin-bottom: 1.5em;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
   }
 }
 

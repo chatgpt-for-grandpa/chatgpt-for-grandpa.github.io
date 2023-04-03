@@ -10,7 +10,7 @@ function Draw() {
   const [input, setInput] = useState("");
   const [isDrawing, setIsDrawing] = useState(false);
   const [errorMessage, setErrorMessage] =
-    useState("画图功能预计4月6日期之前不可用");
+    useState("画图功能预计4月6日之前暂停提供");
   const [image, setImage] = useState("");
 
   const handleSubmit = async () => {
