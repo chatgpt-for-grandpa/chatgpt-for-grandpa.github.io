@@ -79,7 +79,7 @@ function Chat() {
     const selectedKey = element.getAttribute("data-key");
     const toLoad: Record = selectedKey
       ? history.filter(({ key }) => key === selectedKey)[0]
-      : { messages: [], title: "新对话", key: new Date().toLocaleString() };
+      : { messages: [], title: "", key: new Date().toLocaleString() };
 
     setMessages(toLoad.messages);
     setTitle(toLoad.title);
@@ -174,7 +174,7 @@ function Chat() {
     if (!isAnswering) {
       textareaRef.current?.focus();
       saveHistory();
-      if (messages.length % 10 === 6) updateChatTitle();
+      if (messages.length % 10 === 4) updateChatTitle();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAnswering]);
@@ -195,12 +195,12 @@ function Chat() {
             <Dropdown.Divider />
             {history.map((r) => (
               <Dropdown.Item key={r.key} onClick={loadHistory} data-key={r.key}>
-                {r.key} | {r.title}
+                {r.key} | {r.title || "未命名"}
               </Dropdown.Item>
             ))}
           </DropdownButton>
         </Col>
-        {messages.length > 6 && (
+        {title && (
           <Col xs="auto" className="mb-3">
             <Button
               onClick={updateChatTitle}
@@ -215,15 +215,14 @@ function Chat() {
         {messages.length > 0 && (
           <Col xs="auto" className="mb-3">
             <Button variant="danger" onClick={deleteFromHistory}>
-              {" "}
-              删除{" "}
+              删除
             </Button>
           </Col>
         )}
         <Col xs="12" md="1" />
         <Col xs="12" md="auto" className="text-center mb-3">
           <b>
-            {title} -- {recordKey}
+            {title || "新对话"} -- {recordKey}
           </b>
         </Col>
       </Row>
