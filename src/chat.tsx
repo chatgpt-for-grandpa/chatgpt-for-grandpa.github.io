@@ -171,6 +171,10 @@ function Chat() {
   };
 
   useEffect(() => {
+    document.title = title || "AI聊天";
+  }, [title]);
+
+  useEffect(() => {
     if (!isAnswering) {
       textareaRef.current?.focus();
       saveHistory();
