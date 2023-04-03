@@ -188,30 +188,6 @@ function Chat() {
 
   return (
     <div className="chat">
-      {messages.length <= 2 && (
-        <div className="message p-3 mb-4 border">
-          <p>{BotSelfIntro1}</p>
-          <ul>
-            {ChatExamples.map((t) => (
-              <li key={t}>
-                {t}{" "}
-                <small>
-                  <a
-                    href="###"
-                    onClick={() => {
-                      setInput(t);
-                      textareaRef.current?.focus();
-                    }}
-                  >
-                    试试
-                  </a>
-                </small>
-              </li>
-            ))}
-          </ul>
-          <p>{BotSelfIntro2}</p>
-        </div>
-      )}
       <Row className="chat-manager align-items-center mt-2">
         <Col xs="auto" className="mb-3">
           <DropdownButton title="历史对话">
@@ -251,6 +227,30 @@ function Chat() {
           </b>
         </Col>
       </Row>
+      {messages.length <= 2 && (
+        <div className="message p-3 mb-4 border">
+          <p>{BotSelfIntro1}</p>
+          <ul>
+            {ChatExamples.map((t) => (
+              <li key={t}>
+                {t}{" "}
+                <small>
+                  <a
+                    href="###"
+                    onClick={() => {
+                      setInput(t);
+                      textareaRef.current?.focus();
+                    }}
+                  >
+                    试试
+                  </a>
+                </small>
+              </li>
+            ))}
+          </ul>
+          <p>{BotSelfIntro2}</p>
+        </div>
+      )}
       <div className="messages">
         {messages.map((message) => {
           return (
