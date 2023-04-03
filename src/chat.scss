@@ -47,14 +47,5 @@ $bot-message-color: #abcef5;
       margin-bottom: 0;
     }
   }
-
-  .switch-markdown {
-    display: none;
-  }
 }
 
-.message:hover, .message:active {
-  .switch-markdown {
-    display: block;
-  }
-}

@@ -35,7 +35,7 @@ function RenderMessage({ text, uuid, defaultEnableMd }: Props) {
   const mdHtml = md.render(text);
 
   return (
-    <>
+    <div className="rendered-message">
       <div className="switch-markdown">
         <input
           type="checkbox"
@@ -55,7 +55,7 @@ function RenderMessage({ text, uuid, defaultEnableMd }: Props) {
       ) : (
         <p>{text}</p>
       )}
-    </>
+    </div>
   );
 }
 
