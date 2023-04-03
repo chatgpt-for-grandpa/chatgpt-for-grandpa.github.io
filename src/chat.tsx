@@ -47,7 +47,7 @@ async function chatApi(messages: Message[]) {
 
 function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);
-  const [title, setTitle] = useState("新对话");
+  const [title, setTitle] = useState("");
   const [recordKey, setRecordKey] = useState(new Date().toLocaleString());
   const [history, setHistory] = useState<Record[]>([]);
   const [isAnswering, setIsAnswering] = useState(false);
@@ -91,7 +91,7 @@ function Chat() {
     setHistory(newHistory);
     localStorage.history = JSON.stringify(newHistory);
     setMessages([]);
-    setTitle("新对话");
+    setTitle("");
     setRecordKey(new Date().toLocaleString());
   };
 
