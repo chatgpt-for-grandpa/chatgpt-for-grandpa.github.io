@@ -20,6 +20,7 @@ jobs:
         run: yarn build
         env:
           PUBLIC_URL: https://gcore.jsdelivr.net/gh/free-chat-bot/free-chat-bot.github.io@gh-pages
+          REACT_APP_MAIN_ADDRESS: https://chatgpt-for-grandpa.github.io
       - name: "Deploy"
         uses: peaceiris/actions-gh-pages@v3
         with:
