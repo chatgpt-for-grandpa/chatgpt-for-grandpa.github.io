@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import Spinner from "react-bootstrap/Spinner";
 import { BsSearch } from "react-icons/bs";
 import RenderMessage from "./render_message";
-import { MessageApi } from "./consts";
+import { SearchApi } from "./consts";
 
 function Search() {
   const [input, setInput] = useState("");
@@ -18,18 +18,13 @@ function Search() {
     setAnswer("");
     setErrorMessage("");
     try {
-      const response = await fetch(MessageApi, {
+      const response = await fetch(SearchApi, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          message: [
-            {
-              role: "use",
-              content: `你帮我找 ${input}`,
-            },
-          ],
+          message: input,
         }),
       });
 

@@ -3,6 +3,7 @@ export const BotSelfIntro1 =
 export const BotSelfIntro2 =
   "我还能学习和不断改进，以更好地为您服务。但请注意，我只是一个语言模型，我提供的信息可能是瞎编的，请一定注意判断";
 export const MessageApi = "https://www.13042332817.top/message";
+export const SearchApi = "https://www.13042332817.top/search";
 export const DrawApi = "https://www.13042332817.top/draw";
 export const ChatExamples = [
   "陪我聊会天儿吧",

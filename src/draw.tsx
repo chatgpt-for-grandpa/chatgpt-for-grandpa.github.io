@@ -3,19 +3,18 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import Image from "react-bootstrap/Image";
+import Spinner from "react-bootstrap/Spinner";
 import { BsSendFill } from "react-icons/bs";
 import { DrawApi } from "./consts";
 
 function Draw() {
   const [input, setInput] = useState("");
   const [isDrawing, setIsDrawing] = useState(false);
-  const [errorMessage, setErrorMessage] =
-    useState("画图功能预计4月6日之前暂停提供");
+  const [errorMessage, setErrorMessage] = useState("");
   const [image, setImage] = useState("");
 
   const handleSubmit = async () => {
     setIsDrawing(true);
-    setInput("");
     setImage("");
     setErrorMessage("");
     try {
@@ -29,13 +28,12 @@ function Draw() {
         }),
       });
 
-      const url = await response.text();
+      const { url } = await response.json();
       setImage(url);
     } catch (error) {
       setErrorMessage(`出错了: ${error}`);
     } finally {
       setIsDrawing(false);
-      setInput(input);
     }
   };
 
@@ -63,6 +61,7 @@ function Draw() {
         </div>
       )}
 
+      {isDrawing && <Spinner animation="border" />}
       {image && <Image src={image} fluid />}
     </div>
   );
