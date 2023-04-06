@@ -29,7 +29,8 @@ function Draw() {
       });
 
       const { url } = await response.json();
-      setImage(url);
+      if (url.startsWith("https://")) setImage(url);
+      else setErrorMessage(url);
     } catch (error) {
       setErrorMessage(`出错了: ${error}`);
     } finally {
