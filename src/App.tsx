@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import Alert from "react-bootstrap/Alert";
+import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
@@ -58,6 +59,21 @@ function App() {
           )}
         </>
       )}
+      <Nav variant="tabs" defaultActiveKey="#">
+        <Nav.Item>
+          <Nav.Link href="https://www.13042332817.top/chat-student">
+            青春界面
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="https://www.13042332817.top/chat-main">
+            成年友好界面
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="#">聊天界面</Nav.Link>
+        </Nav.Item>
+      </Nav>
       <Container fluid="md" className={`App pt-4 ${fontSizeClasses[fontSize]}`}>
         <h1>聊天机器人</h1>
         <ProjectIntro />
