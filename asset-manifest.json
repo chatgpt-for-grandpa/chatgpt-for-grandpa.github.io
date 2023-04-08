@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/css/main.a4d0a1cb.css",
-    "main.js": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/js/main.2ed3bafe.js",
+    "main.js": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/js/main.61cc4216.js",
     "static/js/787.4def6002.chunk.js": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/js/787.4def6002.chunk.js",
     "static/media/KaTeX_AMS-Regular.ttf": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/media/KaTeX_AMS-Regular.853be92419a6c3766b9a.ttf",
     "static/media/KaTeX_Main-Regular.ttf": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/media/KaTeX_Main-Regular.9eba1d77abcf2aa6e94e.ttf",
@@ -65,11 +65,11 @@
     "static/media/KaTeX_Size3-Regular.woff2": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "index.html": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/index.html",
     "main.a4d0a1cb.css.map": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/css/main.a4d0a1cb.css.map",
-    "main.2ed3bafe.js.map": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/js/main.2ed3bafe.js.map",
+    "main.61cc4216.js.map": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/js/main.61cc4216.js.map",
     "787.4def6002.chunk.js.map": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/js/787.4def6002.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a4d0a1cb.css",
-    "static/js/main.2ed3bafe.js"
+    "static/js/main.61cc4216.js"
   ]
 }
