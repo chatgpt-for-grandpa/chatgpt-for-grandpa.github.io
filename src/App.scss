@@ -1,0 +1,41 @@
+.App {
+  background: linear-gradient(-45deg, #fff calc(50% - 1px), #ddd calc(50%), #fff calc(50% + 1px));
+  background-size: 6px 5px;
+  min-height: 100vh;
+  overflow: auto;
+
+  &.other-ui {
+    background: #333;
+
+    .nav-tabs .nav-link.active {
+      background: #333;
+      border-color: #444;
+      color: #aaa;
+    }
+
+    .nav-tabs .nav-link:hover,
+    .nav-tabs .nav-link:focus {
+      border-color: #444;
+    }
+
+    .nav-tabs {
+      border-color: #444;
+    }
+
+    &> :not(.nav) {
+      display: none;
+    }
+  }
+
+  &.font-sm {
+    font-size: 13px;
+  }
+
+  &.font-lg {
+    font-size: 19px;
+  }
+
+  &.font-xl {
+    font-size: 24px;
+  }
+}
