@@ -30,11 +30,7 @@ function App() {
   };
 
   return (
-    <div
-      className={`App ${fontSizeClasses[fontSize]}${
-        isSwitching ? " other-ui" : ""
-      }`}
-    >
+    <div className={`App${isSwitching ? " other-ui" : ""}`}>
       {showAlert && (
         <>
           {NOT_MAIN_ADDRESS && (
@@ -84,7 +80,7 @@ function App() {
           <Nav.Link href="#">青春界面</Nav.Link>
         </Nav.Item>
       </Nav>
-      <Container fluid="md">
+      <Container fluid="md" className={fontSizeClasses[fontSize]}>
         <h1>聊天机器人</h1>
         <ProjectIntro />
         <Row>
