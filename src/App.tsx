@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import Alert from "react-bootstrap/Alert";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -10,19 +9,9 @@ import "./App.scss";
 import ProjectIntro from "./project_info";
 import Tabs from "./tabs";
 
-const MAIN_ADDRESS: string = process.env.REACT_APP_MAIN_ADDRESS || "";
-
-const NOT_MAIN_ADDRESS: boolean =
-  !!MAIN_ADDRESS && MAIN_ADDRESS !== window.location.origin;
-
-const REDIRECT_FROM: string | null = new URLSearchParams(
-  window.location.search
-).get("redirect_from");
-
 function App() {
   const [fontSize, setFontSize] = useState(1);
   const fontSizeClasses = ["font-sm", "", "font-lg", "font-xl"];
-  const [showAlert, setShowAlert] = useState(true);
   const [isSwitching, setIsSwitching] = useState(false);
 
   const handleFontSizeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,35 +20,6 @@ function App() {
 
   return (
     <div className={`App${isSwitching ? " other-ui" : ""}`}>
-      {showAlert && (
-        <>
-          {NOT_MAIN_ADDRESS && (
-            <Alert
-              variant="danger"
-              onClose={() => setShowAlert(false)}
-              dismissible
-            >
-              最新地址为
-              <Alert.Link href={MAIN_ADDRESS}>{MAIN_ADDRESS}</Alert.Link>
-              ，当前地址可能不再更新。
-            </Alert>
-          )}
-          {REDIRECT_FROM && (
-            <Alert
-              variant="warning"
-              onClose={() => setShowAlert(false)}
-              dismissible
-            >
-              本项目地址变更为<b>{MAIN_ADDRESS}</b>
-              ，现已自动跳转到新地址。可返回原地址
-              <Alert.Link href={`${REDIRECT_FROM}?no_redirect=1`}>
-                {REDIRECT_FROM}
-              </Alert.Link>
-              查看历史对话。欢迎分享新地址。
-            </Alert>
-          )}
-        </>
-      )}
       <Nav
         variant="tabs"
         defaultActiveKey="#"

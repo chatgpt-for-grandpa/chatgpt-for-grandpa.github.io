@@ -11,14 +11,6 @@
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <script>
-      if (
-        !"%REACT_APP_MAIN_ADDRESS%".startsWith("%") &&
-        "%REACT_APP_MAIN_ADDRESS%" !== location.origin &&
-        !new URLSearchParams(location.search).get("no_redirect")
-      )
-        location.href = `%REACT_APP_MAIN_ADDRESS%?redirect_from=${encodeURIComponent(location.origin)}`;
-    </script>
     <title>AI聊天</title>
   </head>
   <body>
