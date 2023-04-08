@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/css/main.69fc4f6f.css",
-    "main.js": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/js/main.daeadf65.js",
+    "main.css": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/css/main.a875faa2.css",
+    "main.js": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/js/main.13d846e5.js",
     "static/js/787.4def6002.chunk.js": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/js/787.4def6002.chunk.js",
     "static/media/KaTeX_AMS-Regular.ttf": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/media/KaTeX_AMS-Regular.853be92419a6c3766b9a.ttf",
     "static/media/KaTeX_Main-Regular.ttf": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/media/KaTeX_Main-Regular.9eba1d77abcf2aa6e94e.ttf",
@@ -64,12 +64,12 @@
     "static/media/KaTeX_Size3-Regular.woff": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/media/KaTeX_Size3-Regular.7947224e8a9914fa332b.woff",
     "static/media/KaTeX_Size3-Regular.woff2": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "index.html": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/index.html",
-    "main.69fc4f6f.css.map": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/css/main.69fc4f6f.css.map",
-    "main.daeadf65.js.map": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/js/main.daeadf65.js.map",
+    "main.a875faa2.css.map": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/css/main.a875faa2.css.map",
+    "main.13d846e5.js.map": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/js/main.13d846e5.js.map",
     "787.4def6002.chunk.js.map": "https://gcore.jsdelivr.net/gh/chatgpt-for-grandpa/chatgpt-for-grandpa.github.io@gh-pages/static/js/787.4def6002.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.69fc4f6f.css",
-    "static/js/main.daeadf65.js"
+    "static/css/main.a875faa2.css",
+    "static/js/main.13d846e5.js"
   ]
 }
